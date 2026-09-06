@@ -1,12 +1,10 @@
-# GitHub Pages へのデプロイ。
-# リポジトリが private の間は Pages を有効化できない（Freeプラン）ため、手動トリガーのみ。
-# 公開後に Settings → Pages → Source を "GitHub Actions" にし、下の push トリガーを有効化する。
+# GitHub Pages へのデプロイ。main への push で自動実行される。
 name: Deploy to GitHub Pages
 
 on:
   workflow_dispatch:
-  # push:
-  #   branches: [main]
+  push:
+    branches: [main]
 
 permissions:
   contents: read
