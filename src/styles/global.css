@@ -1,0 +1,127 @@
+/* Review of Creative Practice and Technology — base typography
+   本格的なデザインパスは別途。ここでは版面の基礎だけを定める */
+
+:root {
+  --paper: #faf9f6;
+  --ink: #1c1b19;
+  --ink-soft: #6b6862;
+  --rule: #d9d6cf;
+  --serif: Georgia, 'Times New Roman', 'Hiragino Mincho ProN', 'Yu Mincho', YuMincho, 'Noto Serif JP', serif;
+  --measure: 38rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 16px;
+}
+
+body {
+  margin: 0;
+  line-height: 1.95;
+  font-feature-settings: normal;
+}
+
+main {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 4rem 1.25rem 6rem;
+}
+
+a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 1px;
+}
+
+h1, h2, h3 {
+  font-weight: 600;
+  line-height: 1.5;
+  font-feature-settings: 'palt' 1;
+}
+
+.masthead {
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 2rem;
+  margin-bottom: 3rem;
+}
+
+.masthead .journal-title {
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
+  margin: 0;
+  font-style: italic;
+}
+
+.masthead .journal-subtitle {
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  margin: 0.25rem 0 0;
+}
+
+.issue-number {
+  font-size: 4.5rem;
+  line-height: 1;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  margin: 0 0 1rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.article-title {
+  font-size: 1.6rem;
+  margin: 0 0 0.75rem;
+}
+
+.article-meta {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  line-height: 1.8;
+}
+
+.badge-draft {
+  display: inline-block;
+  font-size: 0.75rem;
+  border: 1px solid var(--rule);
+  padding: 0.1em 0.6em;
+  color: var(--ink-soft);
+}
+
+.index-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.index-list li {
+  border-bottom: 1px solid var(--rule);
+  padding: 1.5rem 0;
+}
+
+.index-list .num {
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-soft);
+  margin-right: 1em;
+}
+
+article.body {
+  margin-top: 3rem;
+}
+
+article.body p {
+  margin: 0 0 1.5em;
+}
+
+footer.colophon {
+  margin-top: 5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+}

@@ -1,0 +1,32 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+}
+
+const { title } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const journal = 'Review of Creative Practice and Technology';
+const pageTitle = title ? `${title} — ${journal}` : journal;
+---
+
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+  </head>
+  <body>
+    <main>
+      <header class="masthead">
+        <p class="journal-title"><a href={`${base}/`} style="text-decoration: none;">{journal}</a></p>
+        <p class="journal-subtitle">Interviews across Art, Design, and Games</p>
+      </header>
+      <slot />
+      <footer class="colophon">
+        <p>Published by Entangled Press · CC BY 4.0 · <a href="https://github.com/entangled-press/review">Source on GitHub</a></p>
+      </footer>
+    </main>
+  </body>
+</html>

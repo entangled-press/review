@@ -1,0 +1,27 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const interviews = (await getCollection('interviews')).sort(
+  (a, b) => b.data.issue - a.data.issue
+);
+---
+
+<Base>
+  <ul class="index-list">
+    {
+      interviews.map((entry) => (
+        <li>
+          <span class="num">#{String(entry.data.issue).padStart(3, '0')}</span>
+          <a href={`${base}/interviews/${entry.id}/`}>{entry.data.title}</a>
+          {entry.data.status !== 'published' && <span class="badge-draft">準備中</span>}
+          <div class="article-meta">
+            {entry.data.interviewees.map((p) => p.name).join('、')}
+            {entry.data.summary && <> — {entry.data.summary}</>}
+          </div>
+        </li>
+      ))
+    }
+  </ul>
+</Base>

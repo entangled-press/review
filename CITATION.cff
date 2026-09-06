@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+message: "If you cite this journal, please use the citation format below."
+title: "Review of Creative Practice and Technology"
+type: dataset
+authors:
+  - name: "Entangled Press"
+repository-code: "https://github.com/entangled-press/review"
+license: CC-BY-4.0
+keywords:
+  - art
+  - design
+  - games
+  - technology
+  - interviews
+  - archive
