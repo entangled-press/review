@@ -1,14 +1,16 @@
 ---
 import { getCollection } from 'astro:content';
+import { isPublishable } from '../lib/publication.mjs';
 import Base from '../layouts/Base.astro';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
-const interviews = (await getCollection('interviews')).sort(
+const interviews = (await getCollection('interviews', isPublishable)).sort(
   (a, b) => b.data.issue - a.data.issue
 );
 ---
 
 <Base>
+  {interviews.length === 0 && <p>公開済みの記事はまだありません。</p>}
   <ul class="index-list">
     {
       interviews.map((entry) => (

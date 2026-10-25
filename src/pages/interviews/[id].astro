@@ -1,9 +1,10 @@
 ---
 import { getCollection, render } from 'astro:content';
+import { isPublishable } from '../../lib/publication.mjs';
 import Base from '../../layouts/Base.astro';
 
 export async function getStaticPaths() {
-  const interviews = await getCollection('interviews');
+  const interviews = await getCollection('interviews', isPublishable);
   return interviews.map((entry) => ({
     params: { id: entry.id },
     props: { entry },

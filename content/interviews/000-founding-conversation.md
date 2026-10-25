@@ -17,7 +17,6 @@ summary_en: The conversation in which this journal was conceived — a 90-minute
 tags: [quantum, art, game, institution, archive]
 consent: pending
 status: draft
-doi: null
 ---
 
 > **この記事は準備中です。** 構成原稿は文字起こしから編集中で、公開には話し手両名の本人確認と許諾が必要です（`consent: pending`）。

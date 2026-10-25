@@ -5,7 +5,6 @@ type: dataset
 authors:
   - name: "Entangled Press"
 repository-code: "https://github.com/entangled-press/review"
-license: CC-BY-4.0
 keywords:
   - art
   - design

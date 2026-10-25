@@ -23,7 +23,6 @@ const interviews = defineCollection({
     tags: z.array(z.string()).default([]),
     consent: z.enum(['pending', 'confirmed']).default('pending'),
     status: z.enum(['draft', 'in-review', 'published']).default('draft'),
-    doi: z.string().nullable().default(null),
   }),
 });
 
