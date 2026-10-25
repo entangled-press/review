@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-25T16:38:00.453838+09:00",
+  "title": "Design System: Review of Creative Practice and Technology",
+  "extensions": {
+    "breakpoints": [
+      {
+        "name": "single-column",
+        "value": "680px"
+      }
+    ],
+    "shadows": [],
+    "motion": [],
+    "focus": {
+      "outline": "2px solid var(--ink)",
+      "outlineOffset": "6px"
+    },
+    "source": "src/styles/global.css",
+    "brandAssets": [
+      {
+        "path": "assets/logo_RCPT.svg",
+        "intrinsicWidth": 890.3,
+        "intrinsicHeight": 399.8,
+        "purpose": "トップタイトル"
+      },
+      {
+        "path": "assets/logo_RCPT_1line.svg",
+        "intrinsicWidth": 2246.5,
+        "intrinsicHeight": 154.7,
+        "purpose": "ヘッダーとフッター"
+      }
+    ],
+    "brandAssetTreatment": {
+      "filter": "brightness(0) invert(1)",
+      "preserveOriginal": true,
+      "sizing": "max-width:100%;height:auto",
+      "alt": "Review of Creative Practice and Technology"
+    }
+  },
+  "components": [
+    {
+      "name": "記事行",
+      "kind": "custom",
+      "refersTo": "article-row",
+      "description": "実際の記事への番号付きリンク。プレビューのラベルはコンテンツを示さない。",
+      "html": "<a class=\"ds-row\" href=\"#\"><span>号数</span><strong>記事タイトル</strong><span>読む →</span></a>",
+      "css": ".ds-row{display:grid;grid-template-columns:56px 1fr auto;gap:24px;padding:32px 0;border-bottom:1px solid var(--rule,#303236);color:var(--ink,#fff);text-decoration:none;font-family:'Zen Kaku Gothic New',sans-serif}.ds-row span{font-size:13px;color:var(--ink-soft,#fff)}.ds-row strong{font-size:23px;line-height:1.6}.ds-row:hover strong{text-decoration:underline;text-underline-offset:.3em;text-decoration-color:var(--accent,#ff2e3a)}.ds-row:focus-visible{outline:2px solid var(--ink,#fff);outline-offset:6px}@media(max-width:680px){.ds-row{grid-template-columns:1fr;gap:8px}.ds-row strong{font-size:21px}}"
+    },
+    {
+      "name": "補助リンク",
+      "kind": "nav",
+      "refersTo": "secondary-link",
+      "description": "戻るリンクと関連情報への導線。",
+      "html": "<a class=\"ds-link\" href=\"#\">AfterImageへ戻る ↗</a>",
+      "css": ".ds-link{font-family:'Zen Kaku Gothic New',sans-serif;font-size:13px;color:var(--ink-soft,#fff);text-decoration:none}.ds-link:hover{color:#fff;text-decoration-color:var(--accent,#ff2e3a)}.ds-link:focus-visible{outline:2px solid var(--ink,#fff);outline-offset:6px}"
+    }
+  ],
+  "narrative": {
+    "overview": "AfterImage の暗い色調と日本語組版を受け継ぐ、静かな編集ページ。大きなタイトル、余白、細い罫線で順序を示し、読み手を本文へ導く。ここに記載する値は現在の実装から抽出したもの。",
+    "keyCharacteristics": [
+      "暗い紙面と、補助情報も含めた純白の文字。",
+      "提供されたベクターロゴと日本語ゴシックの本文。",
+      "罫線で区切る一覧と、装飾を抑えたリンク。"
+    ],
+    "dos": [
+      "Do 大きさ、太さ、余白と罫線で階層を作る。",
+      "Do 狭い画面では文章と記事行を縦に積む。"
+    ],
+    "donts": [
+      "Don't 空状態を架空の記事で埋めない。",
+      "Don't AfterImage の参照ファイルを変更しない。"
+    ]
+  }
+}

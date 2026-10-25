@@ -1,32 +1,37 @@
 ---
 import '../styles/global.css';
-
-interface Props {
-  title?: string;
-}
-
-const { title } = Astro.props;
+import lineLogo from '../../assets/logo_RCPT_1line.svg?url';
+interface Props { title?: string; home?: boolean; }
+const { title, home = false } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const journal = 'Review of Creative Practice and Technology';
-const pageTitle = title ? `${title} — ${journal}` : journal;
 ---
-
 <html lang="ja">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{pageTitle}</title>
+    <meta name="theme-color" content="#0a0c0f" />
+    <meta name="description" content="アート、デザイン、ゲーム。技術と表現が交わる現場を、当事者の言葉で記録するインタビューアーカイブ。" />
+    <title>{title ? `${title} — ${journal}` : journal}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet" />
   </head>
   <body>
-    <main>
+    <a class="skip-link" href="#main">本文へ移動</a>
+    <div class="site-shell">
       <header class="masthead">
-        <p class="journal-title"><a href={`${base}/`} style="text-decoration: none;">{journal}</a></p>
-        <p class="journal-subtitle">Interviews across Art, Design, and Games</p>
+        <a class="journal-name" href={`${base}/`}><img class="brand-logo header-logo" src={lineLogo} width="2246.5" height="154.7" alt={journal} /></a>
       </header>
-      <slot />
+      <main id="main" class:list={{ 'home-page': home }}><slot /></main>
       <footer class="colophon">
-        <p>Published by Entangled Press · <a href={`${base}/usage/`}>利用方針</a> · <a href="https://github.com/entangled-press/review">Source on GitHub</a></p>
+        <div class="footer-brand"><a href={`${base}/`}><img class="brand-logo footer-logo" src={lineLogo} width="2246.5" height="154.7" alt={journal} loading="lazy" /></a><p>発行：Entangled Press</p></div>
+        <nav aria-label="関連情報">
+          <a href={`${base}/usage/`}>利用方針</a>
+          <a href="https://afterimage-web.pages.dev/">AfterImage</a>
+          <a href="https://github.com/entangled-press/review">GitHub</a>
+        </nav>
       </footer>
-    </main>
+    </div>
   </body>
 </html>

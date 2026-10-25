@@ -2,27 +2,41 @@
 import { getCollection } from 'astro:content';
 import { isPublishable } from '../lib/publication.mjs';
 import Base from '../layouts/Base.astro';
-
+import titleLogo from '../../assets/logo_RCPT.svg?url';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
-const interviews = (await getCollection('interviews', isPublishable)).sort(
-  (a, b) => b.data.issue - a.data.issue
-);
+const interviews = (await getCollection('interviews', isPublishable)).sort((a, b) => b.data.issue - a.data.issue);
 ---
-
-<Base>
-  {interviews.length === 0 && <p>公開済みの記事はまだありません。</p>}
-  <ul class="index-list">
-    {
-      interviews.map((entry) => (
-        <li>
+<Base home>
+  <section class="introduction" aria-labelledby="site-title">
+    <h1 id="site-title" class="display-title"><img class="brand-logo title-logo" src={titleLogo} width="890.3" height="399.8" alt="Review of Creative Practice and Technology" fetchpriority="high" /></h1>
+    <div class="concept">
+      <p class="concept-lead">テクノロジーと表現が出会う場所は、<br />いつも点としてあらわれ、<br />線にならないまま消えていく。</p>
+      <p>その現場にいる人の言葉を、<br />引用できる形で残すためのアーカイブです。</p>
+    </div>
+  </section>
+  <section class="interviews" aria-labelledby="interviews-title">
+    <div class="section-heading"><h2 id="interviews-title">インタビュー</h2><span>{interviews.length}件</span></div>
+    {interviews.length === 0 ? (
+      <div class="empty-state"><p>最初のインタビューを準備しています。</p><p>原稿の確認と掲載の承諾が整い次第、こちらに公開します。</p></div>
+    ) : (
+      <ul class="index-list">{interviews.map(entry => (
+        <li><a class="article-link" href={`${base}/interviews/${entry.id}/`}>
           <span class="num">#{String(entry.data.issue).padStart(3, '0')}</span>
-          <a href={`${base}/interviews/${entry.id}/`}>{entry.data.title}</a>
-          <div class="article-meta">
-            {entry.data.interviewees.map((p) => p.name).join('、')}
-            {entry.data.summary && <> — {entry.data.summary}</>}
-          </div>
-        </li>
-      ))
-    }
-  </ul>
+          <div><h3>{entry.data.title}</h3><p class="article-meta">{entry.data.interviewees.map(p => p.name).join('、')}</p>{entry.data.summary && <p class="article-summary">{entry.data.summary}</p>}</div>
+          <span class="read-link">読む <span aria-hidden="true">→</span></span>
+        </a></li>
+      ))}</ul>
+    )}
+  </section>
+  <section class="about" aria-labelledby="about-title">
+    <h2 id="about-title">表現と技術の合流地点を。</h2>
+    <div class="about-body">
+      <p>技術と表現が出会う場所は、たくさんある。展示があり、教育があり、制度があり、そこでは毎年、新しい試みが始まっている。けれどそれらは点としてあらわれ、数回で終わり、また別の場所で似たものが立ち上がる。何がうまくいき、何がうまくいかなかったのかは、その場にいた人の記憶の中、体験の中にしか残らない。</p>
+      <p>本誌は、その記憶を言葉にして残すために始まった。</p>
+      <p>キュレーター、アーティスト、エンジニア、研究者、ゲーム開発者、技術を地域に持ち込む実践者——立場の違う人たちに、問いを投げかける。<br />技術と表現がつながった瞬間はいつだったのか。<br />なぜ、試みは続かないのか。<br />事業にならないものの成果は、どう測られるべきか。</p>
+      <p>答えは必ずしも一致しない。ある人は「ユーザーの中に何かが生まれたときに表現になる」と言い、別の人は「自分は表現などしていない」と言う。本誌はその不一致を、解消すべき混乱ではなく、記録すべき事実として扱う。<br />領域ごとに別々に積み上げられてきた知が、まだ共通の言葉を持っていないということ自体が、この分野の現在だからである。</p>
+      <p>記事は、話し手本人の確認後に公開する。<br />原稿はGitHubに置かれ、<br />当サイトは閲覧用のビューワーとして管理する。</p>
+      <p>いつか、この記録が線になることを期待して。</p>
+    </div>
+  </section>
 </Base>

@@ -1,127 +1,110 @@
-/* Review of Creative Practice and Technology — base typography
-   本格的なデザインパスは別途。ここでは版面の基礎だけを定める */
-
 :root {
-  --paper: #faf9f6;
-  --ink: #1c1b19;
-  --ink-soft: #6b6862;
-  --rule: #d9d6cf;
-  --serif: Georgia, 'Times New Roman', 'Hiragino Mincho ProN', 'Yu Mincho', YuMincho, 'Noto Serif JP', serif;
-  --measure: 38rem;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-html {
-  background: var(--paper);
+  color-scheme: dark;
+  --paper: #0a0c0f;
+  --surface: #101318;
+  --ink: #fff;
+  --ink-soft: #fff;
+  --rule: #303236;
+  --accent: #ff2e3a;
+  font-family: 'Zen Kaku Gothic New', 'Hiragino Kaku Gothic ProN', sans-serif;
   color: var(--ink);
-  font-family: var(--serif);
-  font-size: 16px;
+  background: var(--paper);
+  font-synthesis: none;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-padding-top: 32px; }
+body { margin: 0; font-size: 16px; line-height: 1.95; -webkit-font-smoothing: antialiased; }
+::selection { background: #54324d; color: var(--ink); }
+a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: .3em; }
+a:hover { color: #fff; text-decoration-color: var(--accent); }
+a:focus-visible { outline: 2px solid var(--ink); outline-offset: 6px; }
+.site-shell { max-width: 1120px; margin-inline: auto; padding-inline: 32px; }
+.masthead { min-height: 104px; display: flex; justify-content: space-between; align-items: center; gap: 24px; border-bottom: 1px solid var(--rule); }
+.journal-name { font-size: 16px; font-weight: 700; text-decoration: none; }
+.back-link { font-size: 13px; color: var(--ink-soft); text-decoration: none; }
+.back-link span { margin-left: 8px; }
+.skip-link { position: absolute; top: -100px; left: 24px; padding: 8px 16px; background: var(--paper); z-index: 2; }
+.skip-link:focus { top: 16px; }
+.introduction { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; padding-block: 104px 112px; }
+h1, h2, h3, p { margin-top: 0; }
+h1, h2, h3 { font-weight: 700; overflow-wrap: anywhere; }
+h1 { font-size: clamp(40px, 5.4vw, 64px); line-height: 1.4; letter-spacing: .02em; margin-bottom: 32px; }
+.concept { padding-top: 8px; max-width: 30em; }
+.concept p { color: var(--ink-soft); margin-bottom: 24px; }
+.concept p:last-child { margin-bottom: 0; }
+.concept .concept-lead { font-size: 25px; font-weight: 500; color: var(--ink); line-height: 1.65; margin-bottom: 32px; }
+.section-heading { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid var(--rule); padding-bottom: 24px; gap: 24px; }
+.section-heading h2 { font-size: 24px; margin: 0; }
+.section-heading > span { font-size: 13px; color: var(--ink-soft); }
+.empty-state { padding-block: 48px 64px; }
+.empty-state p { margin-bottom: 8px; }
+.empty-state p + p { font-size: 14px; color: var(--ink-soft); }
+.index-list { list-style: none; padding: 0; margin: 0; }
+.index-list li { border-bottom: 1px solid var(--rule); }
+.article-link { display: grid; grid-template-columns: 56px 1fr auto; gap: 24px; padding-block: 32px; text-decoration: none; }
+.article-link:hover h3 { text-decoration: underline; text-underline-offset: .3em; }
+.article-link h3 { font-size: 23px; line-height: 1.6; margin-bottom: 12px; }
+.num, .read-link { font-size: 13px; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+.article-meta { color: var(--ink-soft); font-size: 14px; line-height: 1.85; }
+.article-summary { color: var(--ink-soft); font-size: 15px; max-width: 44em; margin-bottom: 0; }
+main:not(.home-page) { max-width: 760px; margin-inline: auto; padding-top: 72px; }
+main:not(.home-page) h1 { font-size: clamp(30px, 4vw, 44px); }
+.issue-number { color: var(--ink-soft); font-size: 16px; font-variant-numeric: tabular-nums; }
+article.body { margin-top: 48px; overflow-wrap: anywhere; }
+article.body h2 { margin-top: 48px; margin-bottom: 20px; font-size: 23px; }
+article.body p { margin-bottom: 24px; }
+article.body img { max-width: 100%; height: auto; }
+.colophon { margin-top: 64px; padding-block: 32px 48px; border-top: 1px solid var(--rule); display: flex; justify-content: space-between; gap: 24px; color: var(--ink-soft); font-size: 12px; }
+.colophon p { margin: 0; }
+.colophon nav { display: flex; flex-wrap: wrap; gap: 24px; }
+.colophon a { text-decoration: none; }
+@media (max-width: 680px) {
+  .site-shell { padding-inline: 24px; }
+  .masthead { min-height: 88px; gap: 16px; }
+  .journal-name { font-size: 14px; }
+  .back-link { font-size: 11px; }
+  .introduction { grid-template-columns: 1fr; gap: 24px; padding-block: 56px 64px; }
+  .introduction h1 { font-size: 46px; margin-bottom: 8px; }
+  .concept .concept-lead { font-size: 22px; margin-bottom: 24px; }
+  .concept p { font-size: 15px; }
+  .section-heading h2 { font-size: 21px; }
+  .empty-state { padding-block: 32px; }
+  .article-link { grid-template-columns: 1fr; gap: 8px; }
+  .article-link h3 { font-size: 21px; }
+  .read-link { margin-top: 8px; }
+  .colophon { flex-direction: column; gap: 16px; margin-top: 48px; }
+  main:not(.home-page) { padding-top: 48px; }
 }
 
-body {
-  margin: 0;
-  line-height: 1.95;
-  font-feature-settings: normal;
+/* Publication title and full concept, approved editorial copy. */
+.introduction { grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 48px; }
+.display-title { font-family: 'IBM Plex Sans', sans-serif; font-style: italic; font-size: clamp(38px, 5.2vw, 66px); font-weight: 600; line-height: 1.12; letter-spacing: -.03em; overflow-wrap: normal; }
+.journal-name { max-width: 32em; line-height: 1.4; }
+.concept .concept-lead { font-size: clamp(18px, 1.7vw, 22px); }
+.about { border-top: 1px solid var(--rule); padding-top: 64px; margin-top: 64px; display: grid; grid-template-columns: 1fr 1.5fr; gap: 64px; }
+.about h2 { font-size: 24px; line-height: 1.6; }
+.about-body { max-width: 36em; }
+.about-body p { margin-bottom: 32px; }
+.about-body p:last-child { margin-bottom: 0; }
+@media (max-width: 680px) {
+  .masthead { align-items: flex-start; padding-block: 24px; }
+  .journal-name { max-width: 20em; font-size: 12px; }
+  .back-link { flex-shrink: 0; }
+  .introduction { grid-template-columns: 1fr; gap: 40px; }
+  .introduction .display-title { font-size: clamp(32px, 7.6vw, 50px); line-height: 1.15; }
+  .concept .concept-lead { font-size: 18px; }
+  .about { grid-template-columns: 1fr; gap: 24px; margin-top: 48px; padding-top: 40px; }
+  .about h2 { font-size: 23px; margin-bottom: 0; }
 }
 
-main {
-  max-width: var(--measure);
-  margin: 0 auto;
-  padding: 4rem 1.25rem 6rem;
-}
-
-a {
-  color: inherit;
-  text-decoration: underline;
-  text-underline-offset: 0.2em;
-  text-decoration-thickness: 1px;
-}
-
-h1, h2, h3 {
-  font-weight: 600;
-  line-height: 1.5;
-  font-feature-settings: 'palt' 1;
-}
-
-.masthead {
-  border-bottom: 1px solid var(--rule);
-  padding-bottom: 2rem;
-  margin-bottom: 3rem;
-}
-
-.masthead .journal-title {
-  font-size: 1.05rem;
-  letter-spacing: 0.02em;
-  margin: 0;
-  font-style: italic;
-}
-
-.masthead .journal-subtitle {
-  font-size: 0.8rem;
-  color: var(--ink-soft);
-  margin: 0.25rem 0 0;
-}
-
-.issue-number {
-  font-size: 4.5rem;
-  line-height: 1;
-  font-weight: 400;
-  letter-spacing: 0.01em;
-  margin: 0 0 1rem;
-  font-variant-numeric: tabular-nums;
-}
-
-.article-title {
-  font-size: 1.6rem;
-  margin: 0 0 0.75rem;
-}
-
-.article-meta {
-  font-size: 0.85rem;
-  color: var(--ink-soft);
-  line-height: 1.8;
-}
-
-.badge-draft {
-  display: inline-block;
-  font-size: 0.75rem;
-  border: 1px solid var(--rule);
-  padding: 0.1em 0.6em;
-  color: var(--ink-soft);
-}
-
-.index-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.index-list li {
-  border-bottom: 1px solid var(--rule);
-  padding: 1.5rem 0;
-}
-
-.index-list .num {
-  font-variant-numeric: tabular-nums;
-  color: var(--ink-soft);
-  margin-right: 1em;
-}
-
-article.body {
-  margin-top: 3rem;
-}
-
-article.body p {
-  margin: 0 0 1.5em;
-}
-
-footer.colophon {
-  margin-top: 5rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--rule);
-  font-size: 0.8rem;
-  color: var(--ink-soft);
+/* Supplied vector wordmarks; source SVGs remain unchanged. */
+.brand-logo { display: block; max-width: 100%; height: auto; filter: brightness(0) invert(1); }
+.title-logo { width: 64%; max-width: 352px; }
+.journal-name { display: block; width: min(48%, 360px); flex-shrink: 1; }
+.header-logo { width: 100%; }
+.footer-brand { display: grid; gap: 20px; }
+.footer-logo { width: 320px; }
+@media (max-width: 680px) {
+  .journal-name { width: min(60%, 320px); }
+  .footer-logo { width: min(100%, 320px); }
 }
