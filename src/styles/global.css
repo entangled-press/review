@@ -153,3 +153,36 @@ article.body img { max-width: 100%; height: auto; }
   .introduction .display-title { min-height: 100svh; margin: 0; display: flex; align-items: center; }
   .introduction .concept { padding-top: 48px; }
 }
+
+/* Logo-only opening, then the original editorial composition. */
+.opening { height: 100svh; display: flex; align-items: center; justify-content: center; }
+.opening-logo { width: min(55vw, 352px); opacity: var(--opening-opacity, 1); transform: translateY(var(--opening-shift, 0px)); }
+.opening-logo img { width: 100%; }
+@media (max-width: 680px) {
+  .introduction { padding-top: 56px; gap: 40px; }
+  .introduction .display-title { min-height: 0; display: block; margin-bottom: 8px; }
+  .introduction .concept { padding-top: 8px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .opening-logo { transform: none; }
+}
+
+/* A single opening identity, followed by centered copy and a compact masthead. */
+.opening-logo { width: min(33vw, 211px); margin: 0; }
+.introduction { display: block; padding-top: 64px; }
+.introduction .concept { max-width: 46em; margin-inline: auto; text-align: center; }
+.scroll-header { position: fixed; top: 0; left: 0; right: 0; z-index: 20; display: flex; justify-content: center; padding: 24px; background: transparent; opacity: 0; transform: translateY(-8px); visibility: hidden; transition: opacity 400ms ease, transform 400ms ease, visibility 400ms; }
+.scroll-header.is-shown { opacity: 1; transform: none; visibility: visible; }
+.scroll-header a { display: block; width: min(65vw, 360px); }
+.scroll-header img { width: 100%; }
+@media (max-width: 680px) {
+  .opening-logo { width: min(33vw, 211px); }
+  .introduction { padding-top: 48px; }
+  .introduction .concept { padding-top: 0; }
+  .scroll-header { padding: 20px 24px; }
+}
+@media (prefers-reduced-motion: reduce) { .scroll-header { transition: none; } }
+
+/* Each editorial line enters independently at its own scroll position. */
+.reveal-line { display: block; }
+.reveal-gap { display: block; height: 1.85em; }

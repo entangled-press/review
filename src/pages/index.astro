@@ -7,12 +7,15 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const interviews = (await getCollection('interviews', isPublishable)).sort((a, b) => b.data.issue - a.data.issue);
 ---
 <Base home>
-  <section class="introduction" aria-labelledby="site-title">
-    <h1 id="site-title" class="display-title"><img class="brand-logo title-logo" src={titleLogo} width="669.4" height="485.1" alt="Review of Creative Practice and Technology" fetchpriority="high" /></h1>
+  <div class="opening">
+    <h1 class="opening-logo"><img class="brand-logo" src={titleLogo} width="669.4" height="485.1" alt="Review of Creative Practice and Technology" fetchpriority="high" /></h1>
+  </div>
+  <section class="introduction" aria-label="このアーカイブについて">
+
     <div class="concept">
-      <p class="concept-lead">テクノロジーと表現が出会う場所は、<br />いつも現れては消えていく。</p>
-      <p>Review of Creative Practice and Technologyは、<br />技術と表現の現場にいる人にインタビューし、<br />その言葉をアーカイブすることで、<br />点を集め、未来につながる線をつくることを目指しています。</p>
-      <p class="project-note">このアーカイブは、IPAの未踏ターゲット事業の一環として始まりました。<br />2026年度未踏ターゲット事業（量子コンピューティング技術を活用したソフトウェア開発分野）採択プロジェクト（平井・藏本・大川・金井PJ）</p>
+      <p class="concept-lead"><span class="reveal-line">テクノロジーと表現が出会う場所は、</span><span class="reveal-line">いつも現れては消えていく。</span></p>
+      <p><span class="reveal-line">Review of Creative Practice and Technologyは、</span><span class="reveal-line">技術と表現の現場にいる人にインタビューし、</span><span class="reveal-line">その言葉をアーカイブすることで、</span><span class="reveal-line">点を集め、未来につながる</span><span class="reveal-line">線をつくることを目指しています。</span></p>
+      <p class="project-note"><span class="reveal-line">当アーカイブは、</span><span class="reveal-line">IPAの未踏ターゲット事業の</span><span class="reveal-line">一環として始まりました。</span><span class="reveal-gap" aria-hidden="true"></span><span class="reveal-line">2025・2026年度未踏ターゲット事業</span><span class="reveal-line">量子コンピューティング技術を活用したソフトウェア開発分野</span><span class="reveal-line">採択プロジェクト（平井・藏本・大川・金井PJ）</span></p>
     </div>
   </section>
   <section class="interviews" aria-labelledby="interviews-title">
