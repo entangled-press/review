@@ -17,7 +17,6 @@ const interviews = (await getCollection('interviews', isPublishable)).sort(
         <li>
           <span class="num">#{String(entry.data.issue).padStart(3, '0')}</span>
           <a href={`${base}/interviews/${entry.id}/`}>{entry.data.title}</a>
-          {entry.data.status !== 'published' && <span class="badge-draft">準備中</span>}
           <div class="article-meta">
             {entry.data.interviewees.map((p) => p.name).join('、')}
             {entry.data.summary && <> — {entry.data.summary}</>}

@@ -29,7 +29,6 @@ const dateFmt = (date: Date) =>
     <p>
       収録: {dateFmt(d.recorded)}
       {d.published && <>／公開: {dateFmt(d.published)}</>}
-      {d.status !== 'published' && <span class="badge-draft">準備中 — 本人確認・公開許諾の完了前です</span>}
     </p>
   </div>
   <article class="body">

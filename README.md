@@ -8,7 +8,7 @@
 
 技術と表現のあいだには、教育・展示・制度の現場で日々実践が生まれているのに、記録されず、引用できる形で残らないまま消えていく知が多くあります。本誌はその知を、キュレーター、アーティスト、エンジニア、研究者、ゲーム開発者へのインタビューとして構成・編集し、出典を示して参照できる形で蓄積します。
 
-[Plurality](https://github.com/pluralitybook/plurality) の方式にならい、**GitHubリポジトリを掲載承諾済み原稿の正本**とし、Webサイトはそれを読むためのビューワーです。
+**GitHubリポジトリを掲載承諾済み原稿の正本**とし、Webサイトはそれを読むためのビューワーです。
 
 ## 構成
 
@@ -20,7 +20,7 @@ EDITORIAL.md          編集フロー・許諾・公開後の対応方針
 
 ## 引用について
 
-各記事の末尾に推奨引用形式を記載しています。基本形:
+記事の出典は、次の形式で記載できます。
 
 > 話し手名, 「記事タイトル」 *Review of Creative Practice and Technology* #001, Entangled Press, 2026. URL
 
@@ -30,13 +30,13 @@ EDITORIAL.md          編集フロー・許諾・公開後の対応方針
 
 ## License
 
-[掲載コンテンツとソースコードの利用方針](LICENSE.md)をご確認ください。掲載許諾と第三者の再利用許諾を区別し、今後の記事にはCC等の包括的ライセンスを付与しません。
+[掲載コンテンツとソースコードの利用方針](LICENSE.md)をご確認ください。掲載許諾と第三者の再利用許諾を区別し、掲載コンテンツにはCC等の包括的ライセンスを付与しません。
 
 ---
 
 ## English
 
-*Review of Creative Practice and Technology* is an open, ongoing archive of interviews documenting where technology and creative expression meet — across art, design, and games. Published by Entangled Press. Each issue is an edited, interviewee-approved conversation, maintained in this repository as the canonical source (in the spirit of [Plurality](https://github.com/pluralitybook/plurality)) and rendered on the web. English summaries accompany every issue. No blanket reuse license is granted for new content. Lawful quotation and other statutory uses remain available; uses requiring permission must be discussed individually. See LICENSE.md.
+*Review of Creative Practice and Technology* is an open, ongoing archive of interviews documenting where technology and creative expression meet — across art, design, and games. Published by Entangled Press. Each issue is an edited, interviewee-approved conversation, maintained in this repository as the canonical source and rendered on the web. No blanket reuse license is granted for published content. Lawful quotation and other statutory uses remain available; uses requiring permission must be discussed individually. See LICENSE.md.
 
 ## ローカル開発と検証
 
