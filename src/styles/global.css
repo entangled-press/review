@@ -138,3 +138,18 @@ article.body img { max-width: 100%; height: auto; }
 }
 
 .concept .project-note { font-size: 12px; font-weight: 400; line-height: 1.85; margin-top: 32px; }
+
+/* A restrained reading rhythm: each passage settles into place once. */
+@media (prefers-reduced-motion: no-preference) {
+  .scroll-reveal { opacity: 0; transform: translateY(24px); filter: blur(3px); transition: opacity 900ms cubic-bezier(.22,1,.36,1), transform 1100ms cubic-bezier(.22,1,.36,1), filter 900ms cubic-bezier(.22,1,.36,1); }
+  .scroll-reveal.is-visible { opacity: 1; transform: none; filter: none; }
+  .scroll-reveal:focus-within { opacity: 1; transform: none; filter: none; }
+}
+@media print { .scroll-reveal { opacity: 1; transform: none; filter: none; } }
+
+/* On phones, the opening screen belongs to the logo alone. */
+@media (max-width: 680px) {
+  .introduction { padding-top: 0; gap: 0; }
+  .introduction .display-title { min-height: 100svh; margin: 0; display: flex; align-items: center; }
+  .introduction .concept { padding-top: 48px; }
+}

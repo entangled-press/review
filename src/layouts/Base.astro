@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import lineLogo from '../../assets/logo_RCPT_1line.svg?url';
+import favicon from '../../assets/logo_favicon.svg?url';
 import ipaLogo from '../../assets/ipa_logo_en.svg?url';
 import mitouLogo from '../../assets/mitoutarget_logo.svg?url';
 interface Props { title?: string; home?: boolean; }
@@ -11,6 +12,7 @@ const journal = 'Review of Creative Practice and Technology';
 <html lang="ja">
   <head>
     <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href={favicon} />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#0a0c0f" />
     <meta name="description" content="アート、デザイン、ゲーム。技術と表現が交わる現場を、当事者の言葉で記録するインタビューアーカイブ。" />
@@ -24,7 +26,7 @@ const journal = 'Review of Creative Practice and Technology';
     <div class="site-shell">
       <main id="main" class:list={{ 'home-page': home }}><slot /></main>
       <footer class="colophon">
-        <a class="footer-wordmark" href={`${base}/`}><img class="brand-logo footer-logo" src={lineLogo} width="2246.5" height="154.7" alt={journal} loading="lazy" /></a>
+        <a class="footer-wordmark" href={`${base}/`}><img class="brand-logo footer-logo" src={lineLogo} width="2246.5" height="169.7" alt={journal} loading="lazy" /></a>
         <div class="program-logos" aria-label="関連機関・プログラム">
           <img class="ipa-logo" src={ipaLogo} width="183.13" height="85.04" alt="IPA 独立行政法人情報処理推進機構" loading="lazy" />
           <img class="mitou-logo" src={mitouLogo} width="742.45" height="193.74" alt="未踏ターゲット" loading="lazy" />
@@ -37,5 +39,31 @@ const journal = 'Review of Creative Practice and Technology';
         </nav>
       </footer>
     </div>
+    <script>
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+      const elements = document.querySelectorAll<HTMLElement>('.introduction > *, .section-heading, .empty-state, .index-list li, .about > h2, .about-body p, .footer-wordmark, .program-logos');
+      if (!reduced.matches && 'IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
+            }
+          }
+        }, { threshold: 0.08, rootMargin: '0px 0px -24px 0px' });
+        elements.forEach((element) => {
+          // First-screen content remains visible immediately.
+          if (element.getBoundingClientRect().top < window.innerHeight) return;
+          element.classList.add('scroll-reveal');
+          observer.observe(element);
+        });
+        reduced.addEventListener('change', () => {
+          if (reduced.matches) {
+            observer.disconnect();
+            elements.forEach(element => element.classList.add('is-visible'));
+          }
+        });
+      }
+    </script>
   </body>
 </html>
