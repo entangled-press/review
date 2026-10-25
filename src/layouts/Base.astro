@@ -1,6 +1,8 @@
 ---
 import '../styles/global.css';
 import lineLogo from '../../assets/logo_RCPT_1line.svg?url';
+import ipaLogo from '../../assets/ipa_logo_en.svg?url';
+import mitouLogo from '../../assets/mitoutarget_logo.svg?url';
 interface Props { title?: string; home?: boolean; }
 const { title, home = false } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
@@ -20,12 +22,14 @@ const journal = 'Review of Creative Practice and Technology';
   <body>
     <a class="skip-link" href="#main">本文へ移動</a>
     <div class="site-shell">
-      <header class="masthead">
-        <a class="journal-name" href={`${base}/`}><img class="brand-logo header-logo" src={lineLogo} width="2246.5" height="154.7" alt={journal} /></a>
-      </header>
       <main id="main" class:list={{ 'home-page': home }}><slot /></main>
       <footer class="colophon">
-        <div class="footer-brand"><a href={`${base}/`}><img class="brand-logo footer-logo" src={lineLogo} width="2246.5" height="154.7" alt={journal} loading="lazy" /></a><p>発行：Entangled Press</p></div>
+        <a class="footer-wordmark" href={`${base}/`}><img class="brand-logo footer-logo" src={lineLogo} width="2246.5" height="154.7" alt={journal} loading="lazy" /></a>
+        <div class="program-logos" aria-label="関連機関・プログラム">
+          <img class="ipa-logo" src={ipaLogo} width="183.13" height="85.04" alt="IPA 独立行政法人情報処理推進機構" loading="lazy" />
+          <img class="mitou-logo" src={mitouLogo} width="742.45" height="193.74" alt="未踏ターゲット" loading="lazy" />
+        </div>
+        <p>発行：Entangled Press</p>
         <nav aria-label="関連情報">
           <a href={`${base}/usage/`}>利用方針</a>
           <a href="https://afterimage-web.pages.dev/">AfterImage</a>
