@@ -22,6 +22,8 @@ const website = {
 <html lang="ja">
   <head>
     <meta charset="utf-8" />
+    <link rel="stylesheet" href={`${base}/analytics.css`} />
+    <script is:inline defer src={`${base}/analytics.js`} data-measurement-id="G-VSD251Q9ZP" data-site-origin="https://entangled-press.github.io" data-cookie-path="/review/" data-privacy-url={`${base}/usage/#privacy`}></script>
     <link rel="icon" type="image/svg+xml" href={favicon} />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#0a0c0f" />
@@ -65,6 +67,7 @@ const website = {
           <a href={`${base}/usage/`}>利用方針</a>
           <a href="https://afterimage-web.pages.dev/">AfterImage</a>
           <a href="https://github.com/entangled-press/review">GitHub</a>
+          <button type="button" data-analytics-settings hidden>アクセス解析の設定</button>
         </nav>
       </footer>
     </div>

@@ -1,0 +1,11 @@
+.analytics-notice { position: fixed; z-index: 1000; inset: auto 16px 16px; max-width: 720px; margin-inline: auto; padding: 24px; background: #101318; color: #fff; font: 400 14px/1.7 'Zen Kaku Gothic New', sans-serif; box-shadow: 0 8px 32px #0008; }
+.analytics-notice[hidden], .analytics-actions [hidden], [data-analytics-settings][hidden] { display: none; }
+.analytics-notice p { margin: 0 0 16px; }
+.analytics-notice a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+.analytics-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.analytics-actions button { min-height: 44px; padding: 8px 16px; background: transparent; border: 1px solid #fff; border-radius: 0; color: #fff; font: inherit; cursor: pointer; }
+.analytics-actions button:hover { background: #fff; color: #101318; }
+.analytics-notice :focus-visible, [data-analytics-settings]:focus-visible { outline: 2px solid #fff; outline-offset: 4px; }
+[data-analytics-settings] { padding: 0; background: none; border: 0; color: inherit; font: inherit; text-decoration: underline; text-underline-offset: 4px; cursor: pointer; }
+@media (max-width: 480px) { .analytics-notice { inset-inline: 12px; bottom: 12px; padding: 20px; } }
+@media print { .analytics-notice, [data-analytics-settings] { display: none; } }
