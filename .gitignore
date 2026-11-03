@@ -14,3 +14,7 @@ dist/
 
 # Local visual verification
 .impeccable/review/
+
+# Private interview working materials (never publish)
+/interviews/
+/private/

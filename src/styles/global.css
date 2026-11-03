@@ -186,3 +186,11 @@ article.body img { max-width: 100%; height: auto; }
 /* Each editorial line enters independently at its own scroll position. */
 .reveal-line { display: block; }
 .reveal-gap { display: block; height: 1.85em; }
+
+/* The opening statement follows the viewport width as one editorial block. */
+.introduction .concept { max-width: 38em; text-align: left; }
+.concept .concept-statement { font-size: clamp(18px, 1.7vw, 22px); font-weight: 500; line-height: 1.95; margin-bottom: 0; }
+.concept .project-note { max-width: 38em; font-size: 14px; line-height: 1.95; margin-top: 40px; }
+@media (max-width: 680px) {
+  .concept .project-note { margin-top: 32px; }
+}
