@@ -1,13 +1,23 @@
 ---
 import '../styles/global.css';
+import ScrollNoise from '../components/ScrollNoise.astro';
 import lineLogo from '../../assets/logo_RCPT_1line.svg?url';
 import favicon from '../../assets/logo_favicon.svg?url';
 import ipaLogo from '../../assets/ipa_logo_en.svg?url';
 import mitouLogo from '../../assets/mitoutarget_logo.svg?url';
-interface Props { title?: string; home?: boolean; }
-const { title, home = false } = Astro.props;
+interface Props { title?: string; description?: string; home?: boolean; article?: boolean; }
+const { title, description = '技術と表現の現場にいるキュレーター、アーティスト、エンジニア、研究者、ゲーム開発者へのインタビューを記録するウェブマガジン。Entangled Press発行。', home = false, article = false } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const journal = 'Review of Creative Practice and Technology';
+const pageTitle = title ? `${title} — ${journal}` : `${journal} | 技術と表現のインタビュー`;
+const canonical = new URL(Astro.url.pathname.replace(/\/index\.html$/, '/').replace(/\/?$/, '/'), Astro.site!).href;
+const socialImage = new URL(`${base}/social-preview.png`, Astro.site!).href;
+const website = {
+  '@context': 'https://schema.org', '@type': 'WebSite',
+  name: journal, url: new URL(`${base}/`, Astro.site!).href,
+  description, inLanguage: 'ja',
+  publisher: { '@type': 'Organization', name: 'Entangled Press' },
+};
 ---
 <html lang="ja">
   <head>
@@ -15,13 +25,26 @@ const journal = 'Review of Creative Practice and Technology';
     <link rel="icon" type="image/svg+xml" href={favicon} />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#0a0c0f" />
-    <meta name="description" content="アート、デザイン、ゲーム。技術と表現が交わる現場を、当事者の言葉で記録するインタビューアーカイブ。" />
-    <title>{title ? `${title} — ${journal}` : journal}</title>
+    <meta name="description" content={description} />
+    <title>{pageTitle}</title>
+    <link rel="canonical" href={canonical} />
+    <link rel="sitemap" type="application/xml" href={`${base}/sitemap.xml`} />
+    <meta property="og:site_name" content={journal} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content={article ? 'article' : 'website'} />
+    <meta property="og:locale" content="ja_JP" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={socialImage} />
+    <meta property="og:image:alt" content={journal} />
+    <meta name="twitter:card" content="summary_large_image" />
+    {home && <script type="application/ld+json" set:html={JSON.stringify(website).replace(/</g, '\\u003c')} />}
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet" />
   </head>
   <body>
+    <ScrollNoise />
     <a class="skip-link" href="#main">本文へ移動</a>
     {home && <header class="scroll-header" inert aria-label="サイトヘッダー"><a href={`${base}/`}><img class="brand-logo" src={lineLogo} width="2246.5" height="169.7" alt={journal} /></a></header>}
     <div class="site-shell">

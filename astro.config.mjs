@@ -4,4 +4,5 @@ import { defineConfig } from 'astro/config';
 export default defineConfig({
   site: 'https://entangled-press.github.io',
   base: '/review',
+  trailingSlash: 'always',
 });

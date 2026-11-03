@@ -194,3 +194,7 @@ article.body img { max-width: 100%; height: auto; }
 @media (max-width: 680px) {
   .concept .project-note { margin-top: 32px; }
 }
+
+/* Keep the shader behind all reading and interaction surfaces. */
+body { isolation: isolate; }
+.site-shell { position: relative; z-index: 1; }
